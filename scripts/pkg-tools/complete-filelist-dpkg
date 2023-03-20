@@ -1,0 +1,93 @@
+#!/bin/sh
+#
+# Create a complete file list for all installed packages
+# dpkg version
+#
+# Author:  Stefan Hundhammer <Stefan.Hundhammer@gmx.de>
+# License: GPL V2
+
+
+SCRIPT_NAME=$(basename $0)
+
+die()
+{
+    msg="$*"
+    echo "$SCRIPT_NAME: FATAL: $msg"
+    exit 1
+}
+
+
+create_tmpdir()
+{
+    test -d $TMPDIR || mkdir -p -m 700 $TMPDIR
+    test -d $TMPDIR || die "Can't create tmp dir $TMPDIR"
+}
+
+
+# Make sure the tmp directory has the right user and group ownership and
+# permissions
+
+check_tmpdir_security()
+{
+
+    test $(stat $TMPDIR --format "%u") -eq $(id -u) || die "$TMPDIR: Wrong user ownership"
+    test $(stat $TMPDIR --format "%g") -eq $(id -g) || die "$TMPDIR: Wrong group ownership"
+    chmod 700 $TMPDIR
+}
+
+
+TMPDIR=/tmp/qdirstat-$USER
+create_tmpdir
+check_tmpdir_security
+
+
+PKGLIST=$TMPDIR/pkglist.txt
+FILELIST_RAW=$TMPDIR/filelist-raw.txt
+FILELIST=$TMPDIR/filelist.txt
+
+
+create_pkglist()
+{
+    dpkg-query --show --showformat '${Package}:${Architecture}\n' >$PKGLIST
+    wc -l $PKGLIST
+}
+
+
+clear_last_line()
+{
+    tput cuu 1 && tput el
+}
+
+
+get_complete_filelist()
+{
+    rm -f $FILELIST_RAW
+    rm -f $FILELIST
+
+    echo "Reading file lists..."
+    xargs <$PKGLIST dpkg --listfiles >>$FILELIST_RAW
+    clear_last_line
+}
+
+
+filter_filelist()
+{
+    echo "Filtering file list... "
+
+    sed -e 's/^diverted by.*to: //' <$FILELIST_RAW  | \
+    sed -e 's/^package diverts others to: //'	    | \
+    grep -v 'does not contain any files'	    | \
+    sort -u					    | \
+    grep -v '^ *$'				    | \
+    grep -v '^/\.$' >$FILELIST
+
+    clear_last_line
+    wc -l $FILELIST
+
+    rm $FILELIST_RAW
+}
+
+
+create_pkglist
+get_complete_filelist
+filter_filelist

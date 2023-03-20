@@ -1,15 +1,30 @@
-Source: template-repository
-Section: unknown
+Source: qdirstat
+Section: x11
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Homepage: https://github.com/shundhammer/qdirstat
+Maintainer: Patrick Matthäi <pmatthaei@debian.org>
+Build-Depends: debhelper-compat (= 13),
+ qtbase5-dev-tools,
+ qtbase5-dev,
+ zlib1g-dev,
+ qt5-qmake
+Rules-Requires-Root: no
+Standards-Version: 4.6.2
 
-Package: template-repository
+Package: qdirstat
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: ${shlibs:Depends},
+ ${perl:Depends},
+ ${misc:Depends},
+ liburi-perl
+Description: Qt-based directory statistics
+ QDirStat is a graphical application to show where your disk space has gone and
+ to help you to clean it up.
+ .
+ QDirStat has a number of new features compared to KDirStat. To name a few:
+  * Multi-selection in both the tree and the treemap.
+  * Unlimited number of user-defined cleanup actions.
+  * Properly show errors of cleanup actions (and their output, if desired).
+  * File categories (MIME types) and their treemap color are now configurable.
+  * Exclude rules for directories are easily configurable.
+  * Desktop-agnostic; no longer relies on KDE or any other specific desktop.
