@@ -1,5 +1,130 @@
-template-repository (1.0-1) unstable; urgency=medium
+qdirstat (1.8.1-3) unstable; urgency=medium
 
-  * Initial release
+  * Adjust debian/watch to work again with GitHub.
+  * Bump Standards-Version to 4.6.2.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 12 Jan 2023 11:08:50 +0100
+
+qdirstat (1.8.1-2) unstable; urgency=medium
+
+  * Adjust renamed lintian tag name in override.
+  * Adjust lintian overrides.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Wed, 14 Sep 2022 14:37:55 +0200
+
+qdirstat (1.8.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump Standards-Version to 4.6.1.
+  * Adjust lintian overrides.
+  * Update debian/copyright.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 04 Jul 2022 12:29:27 +0200
+
+qdirstat (1.8-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Wed, 01 Sep 2021 11:28:34 +0200
+
+qdirstat (1.7.1-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Remove debian/qdirstat.manpages.
+  * debian/watch: Adjust github URL.
+  * Bump Standards-Version to 4.6.0.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 19 Aug 2021 11:22:07 +0200
+
+qdirstat (1.7-2) unstable; urgency=medium
+
+  * Adjust lintian overrides.
+  * Bump Standards-Version to 4.5.1.
+  * Update debian/watch file standard to version 4.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 19 Nov 2020 15:00:05 +0100
+
+qdirstat (1.7-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Use merged manpages from upstream.
+  * Merge 1.5-1+deb10u1 changelog.
+  * Bump debhelper-compat to version 13.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 30 Jul 2020 11:15:03 +0200
+
+qdirstat (1.6.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Mon, 17 Feb 2020 15:12:15 +0100
+
+qdirstat (1.6-2) unstable; urgency=medium
+
+  * Bump Standards-Version to 4.5.0.
+  * Use the new debhelper-compat notation, and drop the d/compat file.
+  * Adjust source lintian-overrides.
+  * Set Rules-Requires-Root: no.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 23 Jan 2020 16:33:14 +0100
+
+qdirstat (1.6-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 23 Jul 2019 11:36:27 +0200
+
+qdirstat (1.5.91-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Wed, 17 Jul 2019 11:45:41 +0200
+
+qdirstat (1.5.90-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump Standards-Version to 4.4.0.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Tue, 09 Jul 2019 09:27:40 +0200
+
+qdirstat (1.5-1+deb10u1) buster; urgency=medium
+
+  * Add upstream patch 01-mime-categories-save to fix a bug where user
+    configured MIME categories are not saved.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Fri, 15 May 2020 11:24:32 +0200
+
+qdirstat (1.5-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Remove merged patch 01-spelling-error.
+    - Remove merged patch 02-desktop-keywords.
+    - Remove merged patch 03-fix-crash-with-caches.
+  * Move source lintian-overrides file to new location.
+  * Fix renamed lintian tag.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 08 Nov 2018 11:56:08 +0100
+
+qdirstat (1.4-3) unstable; urgency=medium
+
+  * Bump Standards-Version to 4.2.1.
+  * Bump debian/compat to level 11.
+  * Add upstream patch 03-fix-crash-with-caches to fix a crash when picking
+    up cache file in starting dir.
+    Closes: #909551
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Fri, 12 Oct 2018 10:34:15 +0200
+
+qdirstat (1.4-2) unstable; urgency=medium
+
+  * Add manual page for qdirstat-cache-writer and qdirstat.
+  * Add dependency on ${perl:Depends} and liburi-perl.
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Fri, 21 Jul 2017 10:09:09 +0200
+
+qdirstat (1.4-1) unstable; urgency=medium
+
+  * Initial release.
+    Closes: #863656
+
+ -- Patrick Matthäi <pmatthaei@debian.org>  Thu, 20 Jul 2017 17:21:36 +0200
